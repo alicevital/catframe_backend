@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ filme[1] }}{% endblock %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-2">{{ filme[1] }}</h2>
+<p><strong>Gênero:</strong> {{ filme[2] }}</p>
+<p><strong>Diretor:</strong> {{ filme[3] }}</p>
+<p><strong>Ano:</strong> {{ filme[4] }}</p>
+<p class="mt-4"><strong>Sinopse:</strong></p>
+<p>{{ filme[5] }}</p>
+{% endblock %}
