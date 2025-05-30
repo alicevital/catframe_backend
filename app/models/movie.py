@@ -1,15 +1,22 @@
-from sqlalchemy import Column, Integer, String, Text
-from database import Base
+# Models ajustados com relacionamentos e constraints
+
+from sqlalchemy import Column, Integer, String, Text, ForeignKey
+from sqlalchemy.orm import relationship
+from ..database import Base # Import relativo corrigido
 
 class Movie(Base):
     __tablename__ = "movies"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)
-    photo = Column(String)
-    duration = Column(String)
-    release_year = Column(Integer)
+    name = Column(String(150), index=True, nullable=False) # Adicionado limite e nullable
+    photo = Column(String(500)) # Aumentado limite para URL
+    duration = Column(Integer) # Alterado para Integer (minutos)
+    release_year = Column(Integer, index=True) # Adicionado index
     description = Column(Text)
-    banner_url = Column(String)
-    director = Column(String)
-    genre = Column(String)
+    banner_url = Column(String(500)) # Aumentado limite para URL
+    director = Column(String(100), index=True) # Adicionado limite e index
+    genre = Column(String(50), index=True) # Adicionado limite e index
+
+    # Relacionamento com Comment
+    comments = relationship("Comment", back_populates="movie")
+
