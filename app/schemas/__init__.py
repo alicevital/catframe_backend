@@ -76,3 +76,14 @@ class Token(BaseModel):
 class TokenData(BaseModel):
     username: Optional[str] = None
 
+
+
+# ========= Password Reset Schemas =========
+
+class PasswordResetRequest(BaseModel):
+    username: str = Field(..., description="Nome de usuário para solicitar a redefinição de senha")
+
+class PasswordReset(BaseModel):
+    token: str = Field(..., description="Token recebido para redefinição de senha")
+    new_password: str = Field(..., min_length=8, description="Nova senha desejada")
+

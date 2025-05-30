@@ -1,5 +1,6 @@
-# Funções de Segurança e Dependências (Ajustado)
+# Funções de Segurança e Dependências (Ajustado com Reset de Senha)
 
+import secrets # Para gerar tokens seguros
 from datetime import datetime, timedelta, timezone
 from typing import Optional
 
@@ -31,10 +32,10 @@ def get_password_hash(password: str) -> str:
     """Gera o hash bcrypt para uma senha."""
     return pwd_context.hash(password)
 
-# --- Funções de Token JWT ---
+# --- Funções de Token JWT (Acesso) ---
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
-    """Cria um novo token JWT."""
+    """Cria um novo token JWT de acesso."""
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
@@ -44,6 +45,19 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
     return encoded_jwt
+
+# --- Funções de Token (Reset de Senha) ---
+
+def create_password_reset_token(username: str) -> str:
+    """
+Gera um token seguro e aleatório para reset de senha.
+    Poderia usar JWT também, mas um token aleatório simples armazenado no DB é comum.
+    """
+    # Gera um token seguro de 32 bytes em formato URL-safe
+    return secrets.token_urlsafe(32)
+
+# A validação do token será feita diretamente no endpoint de reset,
+# comparando o token fornecido com o armazenado no DB e verificando a expiração.
 
 # --- Dependências FastAPI ---
 
