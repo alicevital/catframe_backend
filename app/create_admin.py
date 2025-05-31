@@ -1,6 +1,3 @@
-# Script para criar usuário administrador (Ajustado para resolver dependências)
-
-# Importar todos os modelos primeiro para garantir que o SQLAlchemy os conheça
 from app.models.user import User
 from app.models.movie import Movie
 from app.models.comment import Comment
@@ -8,7 +5,7 @@ from app.models.comment import Comment
 # Importar o necessário para a sessão e hashing
 from app.database import SessionLocal, engine, Base
 from app.dependencies.security import get_password_hash
-from app.config import settings # Importar settings para consistência
+from app.config import settings 
 
 def create_admin():
     # Opcional: Criar tabelas se não existirem (útil para execução isolada)
@@ -23,7 +20,7 @@ def create_admin():
             return
 
         # Criar o admin
-        admin_password = "admin" # Mantenha a senha padrão por enquanto, mas avise o usuário
+        admin_password = "admin"
         admin = User(
             username="admin",
             hashed_password=get_password_hash(admin_password),

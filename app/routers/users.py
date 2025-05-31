@@ -3,16 +3,14 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
-
-# Ajustar imports para serem relativos dentro do pacote 'app'
 from ..database import get_db
 from ..models.user import User
-from ..schemas import UserResponse # Importar do __init__.py dos schemas
-from ..dependencies.security import get_admin_user # Dependência para verificar admin
+from ..schemas import UserResponse 
+from ..dependencies.security import get_admin_user 
 
 router = APIRouter(
-    prefix="/users", # Definir prefixo aqui
-    tags=["Users"], # Manter tags
+    prefix="/users", 
+    tags=["Users"], 
     responses={403: {"description": "Permissão negada"}} # Resposta padrão 403
 )
 

@@ -1,8 +1,6 @@
-# Models ajustados com relacionamentos, constraints e campos para reset de senha
-
 from sqlalchemy import Boolean, Column, Integer, String, ForeignKey, Text, DateTime
 from sqlalchemy.orm import relationship
-from ..database import Base # Import relativo corrigido
+from ..database import Base
 from typing import Optional
 import datetime
 

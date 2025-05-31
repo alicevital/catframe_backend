@@ -1,5 +1,3 @@
-# Schemas Pydantic com validações e ajustes
-
 from pydantic import BaseModel, Field, EmailStr, HttpUrl
 from typing import Optional
 

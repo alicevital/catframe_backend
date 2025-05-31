@@ -1,8 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-
-# Importar configurações centralizadas
 from .config import settings
 
 # Usar a URL do banco de dados das configurações

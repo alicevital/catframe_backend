@@ -3,8 +3,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Path, Body
 from sqlalchemy.orm import Session
 from typing import List
-
-# Ajustar imports para serem relativos dentro do pacote 'app'
 from ..database import get_db
 from ..models.comment import Comment
 from ..models.movie import Movie # Para verificar se o filme existe

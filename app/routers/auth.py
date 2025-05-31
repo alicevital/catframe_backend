@@ -35,7 +35,7 @@ def login_for_access_token(
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Nome de usuário ou senha incorretos",
-            headers={"WWW-Authenticate": "Bearer"}, # Padrão para 401
+            headers={"WWW-Authenticate": "Bearer"}, # @ Padrão para 401
         )
     
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)

@@ -1,20 +1,15 @@
-# Funções de Segurança e Dependências (Ajustado com Reset de Senha)
-
 import secrets # Para gerar tokens seguros
 from datetime import datetime, timedelta, timezone
 from typing import Optional
-
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
-
-# Ajustar imports para serem relativos dentro do pacote 'app'
 from ..database import get_db
 from ..models.user import User
-from ..schemas import TokenData # Importar do __init__.py dos schemas
-from ..config import settings # Importar configurações centralizadas
+from ..schemas import TokenData 
+from ..config import settings 
 
 # Contexto para hashing de senha
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -50,7 +45,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
 
 def create_password_reset_token(username: str) -> str:
     """
-Gera um token seguro e aleatório para reset de senha.
+    Gera um token seguro e aleatório para reset de senha.
     Poderia usar JWT também, mas um token aleatório simples armazenado no DB é comum.
     """
     # Gera um token seguro de 32 bytes em formato URL-safe

@@ -1,14 +1,10 @@
-# Roteador para Filmes (Ajustado)
-
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 from typing import List, Optional
-
-# Ajustar imports para serem relativos dentro do pacote 'app'
 from ..database import get_db
 from ..models.movie import Movie
 from ..models.user import User # Para dependência de admin
-from ..schemas import MovieCreate, MovieResponse, MovieUpdate # Importar do __init__.py dos schemas
+from ..schemas import MovieCreate, MovieResponse, MovieUpdate
 from ..dependencies.security import get_admin_user # Dependência para verificar admin
 
 router = APIRouter(

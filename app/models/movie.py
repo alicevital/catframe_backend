@@ -1,8 +1,6 @@
-# Models ajustados com relacionamentos e constraints
-
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
-from ..database import Base # Import relativo corrigido
+from ..database import Base 
 
 class Movie(Base):
     __tablename__ = "movies"
