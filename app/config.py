@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     # Configurações JWT
     SECRET_KEY: str = "seu_super_segredo_aqui_troque_isso"
     ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30 # Tokens expiram em 30 minutos
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 45 # Tokens expiram em 30 minutos
 
     # Configurações Adicionais (opcional)
     PROJECT_NAME: str = "CatFrame API"

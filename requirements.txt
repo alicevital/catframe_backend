@@ -8,4 +8,3 @@ pydantic-settings>=2.0.0 # Adicionado para config.py
 python-dotenv>=1.0.0 # Adicionado para carregar .env
 # Para banco de dados PostgreSQL (descomente se for usar)
 # psycopg2-binary
-

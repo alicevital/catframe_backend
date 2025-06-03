@@ -26,10 +26,25 @@ def create_movie(
     db.refresh(db_movie)
     return db_movie
 
+@router.post("/json", response_model=List[MovieResponse], status_code=status.HTTP_201_CREATED)
+def create_movies_json(
+    movies: List[MovieCreate],
+    db: Session = Depends(get_db),
+    admin: User = Depends(get_admin_user)
+):
+    """Cria múltiplos filmes no catálogo (requer privilégios de admin)."""
+    db_movies = [Movie(**movie.dict()) for movie in movies]
+    db.add_all(db_movies)
+    db.commit()
+    # Refresh para obter os IDs e campos atualizados
+    for movie in db_movies:
+        db.refresh(movie)
+    return db_movies
+
 @router.get("/", response_model=List[MovieResponse])
 def read_movies(
     skip: int = 0,
-    limit: int = 100,
+    limit: int = 1000,
     title: Optional[str] = Query(None, description="Filtrar por título (case-insensitive)"),
     director: Optional[str] = Query(None, description="Filtrar por diretor (case-insensitive)"),
     genre: Optional[str] = Query(None, description="Filtrar por gênero (case-insensitive)"),

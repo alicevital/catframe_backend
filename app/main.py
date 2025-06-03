@@ -12,7 +12,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(
     title=settings.PROJECT_NAME,
     description="API para gerenciamento de catálogo de filmes com autenticação e permissões.",
-    version="1.0", 
+    version="1.1.0", 
     docs_url="/docs",
     redoc_url="/redoc"
 )

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, EmailStr, HttpUrl
+from pydantic import BaseModel, Field, EmailStr
 from typing import Optional
 
 # ========= User Schemas =========
@@ -21,26 +21,26 @@ class UserResponse(UserBase):
 
 class MovieBase(BaseModel):
     name: str = Field(..., min_length=1, max_length=150)
-    photo: Optional[HttpUrl] = None # Validar como URL
+    photo: Optional[str] = None 
     duration: Optional[int] = Field(None, ge=0) # Duração em minutos, não negativa
     release_year: Optional[int] = Field(None, ge=1888) # Ano mínimo razoável
     description: Optional[str] = None
-    banner_url: Optional[HttpUrl] = None # Validar como URL
+    banner_url: Optional[str] = None 
     director: Optional[str] = Field(None, max_length=100)
-    genre: Optional[str] = Field(None, max_length=50)
+    genre: Optional[str] = Field(None, max_length=100)
 
 class MovieCreate(MovieBase):
     pass
 
 class MovieUpdate(BaseModel): # Schema específico para PATCH
     name: Optional[str] = Field(None, min_length=1, max_length=150)
-    photo: Optional[HttpUrl] = None
+    photo: Optional[str] = None
     duration: Optional[int] = Field(None, ge=0)
     release_year: Optional[int] = Field(None, ge=1888)
     description: Optional[str] = None
-    banner_url: Optional[HttpUrl] = None
+    banner_url: Optional[str] = None
     director: Optional[str] = Field(None, max_length=100)
-    genre: Optional[str] = Field(None, max_length=50)
+    genre: Optional[str] = Field(None, max_length=100)
 
 class MovieResponse(MovieBase):
     id: int
