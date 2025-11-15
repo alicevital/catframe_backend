@@ -1,10 +1,10 @@
-fastapi>=0.110.0 # Atualizar para versão mais recente se possível
-uvicorn[standard]>=0.20.0 # Usar [standard] para melhor performance
-python-jose[cryptography]>=3.3.0
-passlib[bcrypt]>=1.7.4
-python-multipart>=0.0.7
-sqlalchemy>=2.0.0
-pydantic-settings>=2.0.0 # Adicionado para config.py
-python-dotenv>=1.0.0 # Adicionado para carregar .env
+fastapi# Atualizar para versão mais recente se possível
+uvicorn[standard] # Usar [standard] para melhor performance
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+sqlalchemy
+pydantic-settings # Adicionado para config.py
+python-dotenv # Adicionado para carregar .env
 # Para banco de dados PostgreSQL (descomente se for usar)
 # psycopg2-binary
